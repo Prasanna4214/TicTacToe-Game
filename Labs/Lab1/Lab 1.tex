@@ -1,0 +1,350 @@
+\documentclass[
+	letterpaper, % Use US letter paper size
+]{jdf}
+
+\addbibresource{references.bib}
+
+\author{Your Name}
+\email{youremail@gatech.edu}
+\title{KBAI Assignment:\\Getting to Know Jill Watson}
+
+\begin{document}
+
+\maketitle
+
+% =============================================================================
+% The abstract is OPTIONAL. Include one only if your paper benefits from a
+% high-level summary. If you do not need it, delete the abstract environment
+% below. If you keep it, replace the placeholder text with your own summary.
+% =============================================================================
+
+% =============================================================================
+% JDF FORMATTING REFERENCE (this comment block is for your reference only)
+% =============================================================================
+% TYPOGRAPHY: Palatino, 11 pt body, 17 pt line spacing, 8.5 pt after para.
+% TITLE: 17 pt, centered, up to 3 lines.
+% HEADINGS: 11 pt bold. H1 ALL CAPS. H2 bold roman. H3 bold italic.
+%   H4 run-in sidehead (bold italic + em dash). Sentence case except H1.
+% PAGE LAYOUT: US Letter, 1" top margin, 1.5" bottom and sides.
+% FIGURES: Centered, caption below, 8.5 pt caption, referenced in text.
+% TABLES: Caption above ("figures at the foot, tables at the top").
+% QUOTES: <3 lines in-line; 3+ lines as blockquote (0.5" extra margins).
+% LISTS: Indented 0.5" from left, bullet/number hanging 0.25".
+% CITATIONS: APA preferred. \citep{}, \citeauthor{}, \citeyear{}.
+% FOOTNOTES: 8.5 pt, 14 pt line spacing. In-line citations preferred.
+% REFERENCES: Numbered, alphabetical, only cited works. Doesn't count
+%   against page limit.
+% =============================================================================
+
+
+% #############################################################################
+%                   PART 1: CONCEPT EXPLORATIONS
+% #############################################################################
+\section{Concept explorations}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% INSTRUCTIONS (for your reference — not rendered in the PDF):
+%
+% Complete three targeted interactions with Jill Watson (~2.5 hours total).
+% For each activity you are responsible for formulating your OWN prompts.
+% What you are given is a scenario (the context) and a conceptual target
+% (what the conversation must illuminate). How you get there is the exercise.
+%
+% Use a FRESH JW session for each activity to prevent cross-contamination.
+% Design your scenarios BEFORE opening JW — asking JW to generate your
+% scenario undermines the purpose of the activity.
+%
+% Each response should be 2–3 paragraphs.
+%
+% Include one JW chat transcript per activity in the Appendix (3 total).
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+\subsection{Activity A: The four schools and grand challenges (Chapter 1)}
+
+% INSTRUCTIONS (for your reference — not rendered in the PDF):
+%
+% Task: Choose a modern AI application of your choice (e.g., a medical triage
+%   system, a content recommendation engine, a fraud detection system), then
+%   present it to Jill Watson as the basis for your conversation.
+%
+% Conceptual target: Your conversation must surface how Jill Watson applies
+%   the Four Schools framework to your chosen application and whether it
+%   grounds the Explanation Enigma in the specific terms of Chapter 1 rather
+%   than generic AI discourse. How you structure that conversation is your
+%   responsibility.
+%
+% Report question: Does Jill Watson correctly apply the Four Schools
+%   categorization to a non-trivial example? Does it ground the Explanation
+%   Enigma in the specific terms of Chapter 1, or does it drift toward
+%   generic AI discourse? Where does it succeed and where does it fall short?
+
+\textbf{Scenario used.} I will use an AI medical triage system that receives a patient's symptoms, medical history, age, medication list, and recent vital signs, then recommends whether the patient should seek emergency care, schedule a routine appointment, or monitor symptoms at home. This is a non-trivial example because it combines classification, risk assessment, action recommendation, and the need to justify recommendations in a high-stakes setting.
+
+\textbf{Prompt to use with Jill Watson.} According to Chapter 1 of the KBAI ebook, analyze this medical triage AI using the Four Schools of AI from the Russell and Norvig framework. Please classify the system using the thinking/acting and human-like/rational dimensions, explain whether one quadrant is primary or whether the system spans multiple quadrants, and connect the analysis to the Explanation Enigma as one of the Grand Challenges of AI.
+
+\textbf{Draft response frame.} Jill Watson should classify the triage system primarily as an acting rationally system because its most important function is to recommend an action that optimizes patient safety under limited information. It may also involve thinking rationally because it reasons over symptoms and risks, and it may imitate human clinicians in some interaction patterns, but the core goal is not to behave like a human doctor. The strongest response would make this distinction explicitly instead of simply calling the system ``human-like'' because it works in medicine.
+
+The Explanation Enigma is central here because the system's output is not enough by itself. A patient or clinician needs to know why the system recommends emergency care rather than home monitoring, especially when the model uses many variables. After completing the Jill Watson conversation, I will evaluate whether Jill Watson grounded this point in Chapter 1's specific claim that explanation and justification can be more complex than problem solving itself, or whether it drifted into a generic discussion of AI transparency.
+
+\subsection{Activity B: Problem-solving under constraint (Chapters 3 \& 4)}
+
+% INSTRUCTIONS (for your reference — not rendered in the PDF):
+%
+% Task: Define your own Blocks World scenario: an initial state and a goal
+%   state where the MEA is likely to encounter a local optimum.
+%
+% Conceptual target: Your conversation must surface two distinct things:
+%   1. How MEA behaves at the point where a local optimum is encountered —
+%      what it does, and why its own logic traps it there.
+%   2. How the Smart Generator in Generate & Test is designed to avoid that
+%      kind of failure through pruning, and what the balance of responsibility
+%      between Generator and Tester means in practice.
+%   These are separate mechanisms; treat them as such in your conversation.
+%
+% Report question: Can Jill Watson articulate the balance of responsibility
+%   between the Generator and the Tester? Does it correctly diagnose the
+%   local optimum, and does its proposed pruning strategy follow the course
+%   definition of a Smart Generator?
+
+\textbf{Scenario used.} Initial state: A is on the table, B is on C, C is on the table, and D is on B. Goal state: A is on B, B is on C, C is on D, and D is on the table. The legal operators are standard Blocks World moves: move one clear block at a time either to the table or onto another clear block.
+
+\textbf{Prompt to use with Jill Watson.} Using Chapters 3 and 4 of the KBAI ebook, analyze this Blocks World scenario. First explain how Means-Ends Analysis compares the current state to the goal state and why it may reach a local optimum where the next required move appears counterproductive. Then separately explain how Generate and Test with a Smart Generator would avoid wasted search through pruning. Please distinguish the responsibilities of the Generator and Tester.
+
+\textbf{Draft response frame.} Means-Ends Analysis should be described as a greedy difference-reduction method: it compares the current state to the goal state, selects an operator that appears to reduce the difference, and repeats. The local optimum occurs when all immediately available legal moves appear to undo progress or increase the difference count, even though one of those temporary setbacks may be necessary to reach the true goal. If Jill Watson correctly follows Chapter 4, it should explain that MEA's own preference for reducing differences is what traps it.
+
+Generate and Test is a separate mechanism. The Generator proposes possible states, while the Tester evaluates them against constraints or goals. A Smart Generator improves the process by not generating illegal, repeated, or obviously unproductive states in the first place, reducing the Tester's workload. After completing the Jill Watson conversation, I will judge whether it keeps this pruning role separate from MEA's local-optimum behavior and whether it correctly describes the balance of responsibility between Generator and Tester.
+
+\subsection{Activity C: Frame-based understanding (Chapter 6)}
+
+% INSTRUCTIONS (for your reference — not rendered in the PDF):
+%
+% Task: Provide a short ambiguous scenario of your own design (e.g., "A
+%   visitor arrived at the building and was escorted to a room").
+%
+% Conceptual target: Your conversation must make visible the distinction
+%   between what you stated in your scenario and what Jill Watson assumed
+%   using Default Values. It must also surface how Top-Down Processing
+%   governed those assumptions. A response from JW that produces a Frame
+%   without explaining the source of each filler has not met the conceptual
+%   target.
+%
+% Report question: Does Jill Watson distinguish between information stated
+%   in your scenario and information it assumed via defaults? Does it make
+%   that distinction transparent in its response, or do you have to infer
+%   it? What does this reveal about the strengths and limitations of
+%   Frame-based representation as a mechanism for handling ambiguity?
+
+\textbf{Scenario used.} A visitor arrived at the hospital entrance and was escorted to a room.
+
+\textbf{Prompt to use with Jill Watson.} According to Chapter 6 of the KBAI ebook, construct a frame-based interpretation of this scenario. Please separate the fillers that are explicitly stated from fillers inferred using default values. Also explain how Top-Down Processing guides the assumptions, and list at least two alternative interpretations that would change the frame.
+
+\textbf{Draft response frame.} The stated information is sparse: there is a visitor, the visitor arrived at a hospital entrance, and someone escorted the visitor to a room. A frame-based interpretation may infer a hospital-visit frame with slots such as role, location, purpose, escort, destination room, and expected procedure. However, many likely fillers are defaults rather than facts: the visitor might be a patient, the escort might be staff, and the room might be an examination room. Those assumptions are useful, but they are not guaranteed by the sentence.
+
+Top-Down Processing explains why those assumptions arise. The word ``hospital'' activates a familiar hospital-visit frame, and that frame guides the search for likely slot fillers. The strength of frames is that they let an agent reason efficiently from incomplete information; the limitation is that defaults can silently introduce assumptions. After completing the Jill Watson conversation, I will evaluate whether Jill Watson made the stated/default distinction transparent or whether I had to infer which fillers came from the scenario versus the frame.
+
+
+% #############################################################################
+%                   PART 2: COMPARISON ANALYSIS
+% #############################################################################
+\section{Comparison analysis}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% INSTRUCTIONS (for your reference — not rendered in the PDF):
+%
+% This experiment tests the difference between domain-grounded retrieval and
+% probabilistic text generation on the same scene, using intentionally
+% different prompts for each system (~1 hour).
+%
+% Use this scene for BOTH systems:
+%   "A small blue cube is supported by two large red bricks, and a yellow
+%    sphere rests on top of the cube."
+%
+% Prompt for Jill Watson:
+%   "According to the KBAI ebook, construct a Semantic Network for this
+%    scene. Explicitly list the Lexicon (nodes) and the Structural
+%    Specifications (directed, labeled links) as defined in Chapter 2."
+%
+% Prompt for the general LLM:
+%   "Describe the spatial relationships between these objects in a
+%    structured way."
+%
+% The two prompts differ INTENTIONALLY: JW is anchored to the ebook; the
+% general LLM is not. Your analysis should address whether the prompting
+% difference fully explains any quality gap, or whether the underlying
+% architecture (RAG vs. general LLM) is doing independent work.
+%
+% Deliverables:
+%   1. Completed comparison matrix (below).
+%   2. One analysis paragraph addressing the report question.
+%   3. Two chat transcripts in the Appendix (one JW, one general LLM).
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+\subsection{Comparison matrix}
+
+\textbf{Jill Watson prompt.} According to the KBAI ebook, construct a Semantic Network for this scene: ``A small blue cube is supported by two large red bricks, and a yellow sphere rests on top of the cube.'' Explicitly list the Lexicon (nodes) and the Structural Specifications (directed, labeled links) as defined in Chapter 2.
+
+\textbf{General LLM prompt.} Describe the spatial relationships between these objects in a structured way.
+
+\begin{table}[h]
+	\caption{Comparison matrix: Jill Watson vs.\ General LLM.}
+	\small
+	\centering
+	\begin{tabular}{L{0.22\linewidth} L{0.34\linewidth} L{0.34\linewidth}}
+		\textbf{Criterion} & \textbf{Jill Watson} & \textbf{General LLM} \\
+		\toprule[0.5pt]
+		Groundedness: Does the response use course-specific terminology (Lexicon, Structural Specifications, directed, labeled links), or fall back on generic AI/graph language? & Replace with observation after JW transcript. Expected standard: should explicitly use Lexicon, Structural Specification, directed links, and labeled links from Chapter 2. & Replace with observation after general LLM transcript. Expected pattern: may describe objects and relations clearly, but may not use course-specific terminology unless prompted. \\
+		\midrule
+		Representational Rigor: Does the response correctly separate nodes (Lexicon) from directed, labeled links (Structural Specifications), or conflate them into a narrative or flat list? & Replace with observation after JW transcript. Expected standard: should separate nodes such as cube, brick 1, brick 2, and sphere from links such as supports and rests-on. & Replace with observation after general LLM transcript. Expected pattern: may produce a useful list, but may conflate object descriptions and relations. \\
+		\midrule
+		Reasoning Transparency: Does the response explain why links are directed and what relationship each link encodes, or simply list connections without justification? & Replace with observation after JW transcript. Expected standard: should explain that direction captures relationship roles, for example brick supports cube and sphere rests on cube. & Replace with observation after general LLM transcript. Expected pattern: may describe spatial layout but may not explain directionality as a representational choice. \\
+	\end{tabular}
+\end{table}
+
+\subsection{Analysis}
+
+% INSTRUCTIONS (for your reference — not rendered in the PDF):
+%
+% Report question: The two prompts differ intentionally: Jill Watson was
+% anchored to the KBAI ebook; the general LLM was not. Does that prompting
+% difference fully explain any quality gap you observed, or does the
+% underlying architecture (RAG vs. general language model) appear to be
+% doing independent work? If the general LLM produced a formally correct
+% Semantic Network despite the weaker prompt, what does that imply? If Jill
+% Watson underperformed despite the stronger prompt, what does that suggest
+% about the limits of RAG-based grounding?
+
+\textbf{Draft response frame.} The comparison should not simply reward whichever response sounds more polished. Jill Watson receives the stronger, course-anchored prompt, so a strong answer should use the ebook's vocabulary: Lexicon, Structural Specification, directed labeled links, and Semantics. The general LLM receives a weaker prompt, so if it still creates a formally good structure, that suggests general language models can sometimes infer useful representational structure without explicit course grounding. If Jill Watson underperforms despite the stronger prompt, that would show a limit of RAG-based grounding: retrieval can provide access to course terminology, but it does not guarantee that the model will apply the terminology rigorously.
+
+
+% #############################################################################
+%                   PART 3: SOCRATIC AUDIT REFLECTION
+% #############################################################################
+\section{Socratic audit reflection}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% INSTRUCTIONS (for your reference — not rendered in the PDF):
+%
+% Copy and paste the instruction block below into Jill Watson to begin a
+% 5-question Socratic audit (~45 minutes). The questions cover Chapters 1–4
+% and 6; Chapter 5 is represented in the Part 1 prompting example.
+%
+% WHAT TO EXPECT: If you answer incorrectly, JW will not reveal the answer.
+% It will examine your wrong answer, identify where your reasoning broke
+% down, and respond with a targeted question. After 4 Socratic follow-ups
+% on the same question without a correct answer, JW reveals the answer with
+% an explanation. Engage with JW's questions seriously.
+%
+% DRIFT RECOVERY: If JW loses track of the question sequence, use:
+%   "Resume at Question [X]."
+% If drift recurs, re-paste the full instruction block (this restarts at Q1).
+%
+% ROLE FAILURE: If JW drops the Socratic constraint and answers directly:
+%   "You have abandoned your role as Socratic tutor. Re-read the instruction
+%    block and resume at Question [X] without revealing the answer."
+% If it persists after re-pasting, submit the transcript as evidence — a
+% documented role failure is itself a valid finding.
+%
+% In your report, note where drift or role failure occurred and reflect on
+% what each reveals about the architectural limitations of stateless LLMs.
+%
+% INSTRUCTION BLOCK TO PASTE INTO JILL WATSON:
+%
+% START OF INSTRUCTION BLOCK System Role: Act as a Socratic KBAI Tutor
+% guiding me through a 5-question audit. Operational Rules: • Begin every
+% turn with: Current Status: Question [X] of 5 • Ask exactly one question.
+% Wait for my response before proceeding. • If I answer correctly, provide
+% a brief grounding passage or explanation from the ebook. Do not fabricate
+% a citation; if you cannot retrieve a specific passage, explain the concept
+% in terms of the chapter's framework. Then advance. • If I answer
+% incorrectly, do not reveal the correct answer. Instead, apply the Socratic
+% Method: examine my specific wrong answer, identify where my reasoning
+% broke down, and ask a targeted question designed to expose that gap. Your
+% question must be derived from what I actually said — not a generic hint.
+% The goal is to guide me to construct the correct understanding myself
+% through the exchange. A chapter reference or conceptual anchor may support
+% your question, but a probing question must always be present. Do not skip
+% ahead. • If I have not arrived at the correct answer after 4 Socratic
+% follow-ups on the same question, reveal the correct answer and explain
+% precisely why my reasoning was wrong and why the correct answer follows
+% from the course framework. Then advance to the next question. • Do not
+% invent questions. Use only the five below, in order. The Five Questions:
+% 1. According to the Russell & Norvig Framework, an airplane autopilot is
+% best described as an agent that: (A) Thinks like a human, (B) Acts like a
+% human, (C) Acts optimally (rationally), (D) Thinks optimally (rationally).
+% 2. In a Semantic Network for a Blocks World scene, what does the
+% Structural Specification specifically define? (A) The names of the objects
+% (nodes), (B) The directed, labeled links between nodes representing
+% relationships, (C) The physical size of the objects, (D) The weight
+% assigned to each transformation. 3. A Smart Generator in the Generate and
+% Test method is characterized by its ability to: (A) Test every possible
+% solution more quickly, (B) Prune illegal or unproductive moves before the
+% Tester evaluates them, (C) Use inductive logic to guess the answer, (D)
+% Store every failed attempt in Episodic Memory. 4. Means-Ends Analysis can
+% fail on certain Blocks World problems because: (A) It runs out of working
+% memory before reaching the goal, (B) Reducing one difference sometimes
+% requires temporarily increasing another, making the next step appear
+% counterproductive, (C) It cannot identify valid operators when more than
+% three blocks are involved, (D) It requires a complete search tree before
+% selecting any operator. 5. A Frame for "Animal" has a Movement slot with
+% a default filler of "Walks." A Penguin instance swims instead. How does
+% the agent handle this? (A) It rejects Penguin as an animal, (B) It
+% creates a new Bird frame from scratch, (C) The Penguin instance overrides
+% the default value in its specific slot, (D) It switches to a Semantic
+% Network representation. Please begin by asking Question 1.
+% END OF INSTRUCTION BLOCK
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+\textbf{Audit plan.} I will paste the full Socratic tutor instruction block into a fresh Jill Watson session and answer all five questions. The key concepts being audited are: autopilot as an acting rationally agent, Structural Specification as directed labeled links, Smart Generator pruning before testing, MEA failure when temporary regressions are needed, and frame defaults being overridden by specific instances.
+
+\textbf{Draft response frame.} After completing the audit, I will describe one moment where Jill Watson either corrected my reasoning or confirmed that my understanding was already stable. If I answer all five questions correctly on the first attempt, the most conceptually interesting question is likely Question 4, because MEA's failure is counterintuitive: a move that increases the immediate difference can be necessary for the global solution. A skilled tutor should probe whether I understand the difference between local progress and global success.
+
+I will also note whether Jill Watson maintained the required Socratic role. If it asks exactly one question at a time, tracks the current question, and does not reveal answers prematurely, that suggests it can follow procedural tutoring constraints within a short interaction. If it drifts, skips ahead, or answers directly after an incorrect response, that would reveal a limitation of stateless or weakly stateful LLM tutoring compared with a human tutor who actively maintains conversational context and pedagogical intent.
+
+
+% #############################################################################
+%                             REFERENCES
+% #############################################################################
+\section{References}
+\printbibliography[heading=none]
+
+
+% #############################################################################
+%                          CHAT TRANSCRIPTS
+% #############################################################################
+\section{Chat transcripts}
+
+\textbf{IMPORTANT:} This section is a required and graded deliverable. You must include the complete chat transcripts for every interaction across all three parts of this assignment. Incomplete or missing transcripts may result in point deductions. Six transcripts are required: three from Part 1 (JW only), two from Part 2 (one JW, one general LLM), and one from Part 3 (JW). This section does not count against the page limit.
+
+\textbf{Submission note.} Based on the Ed discussion at \href{https://edstem.org/us/courses/98722/discussion/8088626?answer=18711024}{Question 53}, the transcript section can be pasted as plaintext instead of inside a verbatim block if verbatim formatting creates long lines that exceed the page margin. Images from Jill Watson should be included separately only if they are needed to understand the conversation.
+
+\subsection{Part 1 transcripts}
+
+\subsubsection{Activity A --- Jill Watson}
+
+\textit{Paste the complete Activity A Jill Watson transcript here as plaintext.}
+
+\subsubsection{Activity B --- Jill Watson}
+
+\textit{Paste the complete Activity B Jill Watson transcript here as plaintext.}
+
+\subsubsection{Activity C --- Jill Watson}
+
+\textit{Paste the complete Activity C Jill Watson transcript here as plaintext.}
+
+\subsection{Part 2 transcripts}
+
+\subsubsection{Jill Watson}
+
+\textit{Paste the complete Part 2 Jill Watson transcript here as plaintext.}
+
+\subsubsection{General LLM}
+
+\textit{Paste the complete Part 2 general LLM transcript here as plaintext.}
+
+\subsection{Part 3 transcript}
+
+\subsubsection{Socratic audit --- Jill Watson}
+
+\textit{Paste the complete Socratic audit Jill Watson transcript here as plaintext.}
+
+\end{document}
